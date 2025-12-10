@@ -46,15 +46,15 @@ Tests with large intervals
 Your algorithm should be able to handle large intervals. All tested intervals are subsets of the range [-1000000000, 1000000000].
 """
 
-def sum_of_intervals(i):
-    i.sort(key=lambda x: x[0])
-    i = list(map(list, i))
-    sum = 0
-    for x in range(len(i)):
-        if (x == len(i) - 1) or (i[x][1] < i[x+1][0]):
-            sum += (i[x][1]-i[x][0])
+def sum_of_intervals(interval):
+    interval.sort(key=lambda x: x[0])
+    interval = list(map(list, interval))
+    final_sum = 0
+    for x in range(len(interval)):
+        if (x == len(interval) - 1) or (interval[x][1] < interval[x+1][0]):
+            final_sum += (interval[x][1]-interval[x][0])
         else: 
-            i[x+1][0] = i[x][0]
-            if (i[x][1] > i[x+1][1]):
-                i[x+1][1] = i[x][1]
-    return sum
+            interval[x+1][0] = interval[x][0]
+            if (interval[x][1] > interval[x+1][1]):
+                interval[x+1][1] = interval[x][1]
+    return final_sum
